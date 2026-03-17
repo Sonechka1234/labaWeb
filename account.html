@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - Сити-Класс</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvd-KsgNyl7pBfn2IEu7-Uu8fhbkM8LjqYvQ&s" 
+                 alt="Логотип Winx" width="140">
+        </div>
+        <div class="site-name">СИТИ-КЛАСС</div>
+        <div class="login-form">
+            <form action="#" method="post">
+                <label>логин: <input type="text" name="login"></label><br>
+                <label>пароль: <input type="password" name="password"></label><br>
+                <a href="register.html" class="register-link">регистрация</a>
+                <button type="submit">войти</button>
+            </form>
+        </div>
+    </header>
+
+    <nav class="top-menu">
+        <a href="index.html">🏠 Главная</a>
+        <a href="catalog.html">👟 Наша обувь</a>
+        <a href="about.html">🏢 О магазине</a>
+        <a href="contacts.html">📞 Контакты</a>
+    </nav>
+
+    <div class="container">
+        <aside class="left-sidebar">
+            <h3>📋 Меню</h3>
+            <ul class="side-menu">
+                <li><a href="index.html">🏠 Главная</a></li>
+                <li><a href="catalog.html">👟 Каталог</a></li>
+                <li><a href="about.html">🏢 О нас</a></li>
+                <li><a href="contacts.html">📞 Контакты</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h1>ЛИЧНЫЙ КАБИНЕТ</h1>
+            <hr>
+            
+            <div class="account-info">
+                <h2 id="greeting">Добро пожаловать, <span>Пользователь</span>!</h2>
+                
+                <h3>📌 Ваши данные:</h3>
+                <ul>
+                    <li><strong>Имя:</strong> Анна</li>
+                    <li><strong>Фамилия:</strong> Иванова</li>
+                    <li><strong>Email:</strong> anna@example.com</li>
+                    <li><strong>Телефон:</strong> +7 (999) 123-45-67</li>
+                    <li><strong>Дата регистрации:</strong> 17.03.2026</li>
+                </ul>
+                
+                <h3>📦 Мои заказы:</h3>
+                <table border="1" cellpadding="10" class="info-table">
+                    <tr>
+                        <th>№ заказа</th>
+                        <th>Дата</th>
+                        <th>Товар</th>
+                        <th>Сумма</th>
+                        <th>Статус</th>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>15.03.2026</td>
+                        <td>Кроссовки Winx</td>
+                        <td>6 990 ₽</td>
+                        <td class="status-delivered">✅ Доставлен</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>16.03.2026</td>
+                        <td>Туфли Valentino</td>
+                        <td>38 500 ₽</td>
+                        <td class="status-processing">🔄 В обработке</td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>17.03.2026</td>
+                        <td>Тапочки Victoria's Secret</td>
+                        <td>3 200 ₽</td>
+                        <td class="status-processing">📦 Отправлен</td>
+                    </tr>
+                </table>
+                
+                <h3>💳 Избранное:</h3>
+                <ul>
+                    <li>👠 Туфли Jimmy Choo — 45 000 ₽</li>
+                    <li>👟 Кроссовки Winx — 6 990 ₽</li>
+                </ul>
+                
+                <h3>⚙️ Настройки:</h3>
+                <button onclick="editProfile()">✏️ Редактировать профиль</button>
+                <button onclick="changePassword()">🔑 Сменить пароль</button>
+                <button onclick="viewHistory()">📜 История заказов</button>
+                <button onclick="logout()" class="logout-btn">🚪 Выйти</button>
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="banner">
+                <a href="delivery.html">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxbGjbxj0oPxJz_Dk8G3tuIlVLmPiE_x8_SQ&s" 
+                         alt="Бесплатная доставка" width="180">
+                    <p>🚚 Бесплатная доставка</p>
+                </a>
+            </div>
+            <div class="banner">
+                <a href="catalog.html">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Yhd3NrRexdGSo1C6mSpyZUZh2gEGNKq3og&s" 
+                         alt="Новая коллекция" width="180">
+                    <p>✨ Новая коллекция</p>
+                </a>
+            </div>
+            <div class="banner">
+                <a href="discounts.html">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Howx1kBT1KffR3kuPvFpRAb6RnygHH73ow&s" 
+                         alt="Скидки 50%" width="180">
+                    <p>🔥 Скидки 50%</p>
+                </a>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Сити-Класс. Все права защищены</p>
+    </footer>
+
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var userData = localStorage.getItem('userCityClass');
+    
+    if (userData) {
+        var user = JSON.parse(userData);
+        
+        // Обновляем приветствие
+        var hours = new Date().getHours();
+        var greeting = '';
+        if (hours < 12) greeting = '🌅 Доброе утро';
+        else if (hours < 18) greeting = '☀️ Добрый день';
+        else greeting = '🌙 Добрый вечер';
+        
+        document.getElementById('greeting').innerHTML = 
+            greeting + ', <span>' + user.name + ' ' + user.surname + '</span>!';
+        
+        // Обновляем данные пользователя
+        var userInfoList = document.querySelector('.account-info ul');
+        if (userInfoList) {
+            userInfoList.innerHTML = 
+                '<li><strong>Имя:</strong> ' + user.name + '</li>' +
+                '<li><strong>Фамилия:</strong> ' + user.surname + '</li>' +
+                '<li><strong>Email:</strong> ' + user.email + '</li>' +
+                '<li><strong>Телефон:</strong> ' + (user.phone || 'Не указан') + '</li>' +
+                '<li><strong>Логин:</strong> ' + user.login + '</li>' +
+                '<li><strong>Дата регистрации:</strong> ' + user.registered + '</li>';
+        }
+    } else {
+        // Если нет данных — показываем сообщение
+        var accountInfo = document.querySelector('.account-info');
+        if (accountInfo) {
+            accountInfo.innerHTML = 
+                '<h2>⚠️ Вы не авторизованы</h2>' +
+                '<p>Пожалуйста, <a href="register.html">зарегистрируйтесь</a> или ' +
+                '<a href="index.html">войдите</a> в систему.</p>' +
+                '<button onclick="window.location.href=\'register.html\'">Зарегистрироваться</button>';
+        }
+    }
+});
+
+function editProfile() {
+    alert('✏️ Функция редактирования профиля будет доступна скоро!');
+}
+
+function changePassword() {
+    const newPassword = prompt('🔑 Введите новый пароль:');
+    if (newPassword && newPassword.length >= 6) {
+        alert('✅ Пароль успешно изменён!');
+    } else if (newPassword) {
+        alert('❌ Пароль должен содержать минимум 6 символов!');
+    }
+}
+
+function viewHistory() {
+    alert('📜 История заказов отображается в таблице выше!');
+}
+
+function logout() {
+    if (confirm('🚪 Вы действительно хотите выйти из личного кабинета?')) {
+        // Очищаем данные
+        localStorage.removeItem('userCityClass');
+        alert('👋 Вы вышли из системы. До свидания!');
+        window.location.href = 'index.html';
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы - Сити-Класс</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvd-KsgNyl7pBfn2IEu7-Uu8fhbkM8LjqYvQ&s" 
+                 alt="Логотип Winx" width="140">
+        </div>
+        <div class="site-name">СИТИ-КЛАСС</div>
+        <div class="login-form">
+            <form action="#" method="post">
+                <label>логин: <input type="text" name="login"></label><br>
+                <label>пароль: <input type="password" name="password"></label><br>
+                <a href="register.html" class="register-link">регистрация</a>
+                <button type="submit">войти</button>
+            </form>
+        </div>
+    </header>
+
+    <nav class="top-menu">
+        <a href="index.html">🏠 Главная</a>
+        <a href="catalog.html">👟 Наша обувь</a>
+        <a href="about.html">🏢 О магазине</a>
+        <a href="contacts.html">📞 Контакты</a>
+    </nav>
+
+    <div class="container">
+        <aside class="left-sidebar">
+            <h3>📋 Меню</h3>
+            <ul class="side-menu">
+                <li><a href="index.html">🏠 Главная</a></li>
+                <li><a href="catalog.html">👟 Каталог</a></li>
+                <li><a href="about.html">🏢 О нас</a></li>
+                <li><a href="contacts.html">📞 Контакты</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h1>📝 ОСТАВИТЬ ОТЗЫВ</h1>
+            <hr>
+            
+            <form class="register-form" action="feedback.php" method="post">
+                <!-- Однострочное текстовое поле -->
+                <label class="required">
+                    Ваше имя:*
+                    <input type="text" name="name" required placeholder="Введите имя">
+                </label>
+                
+                <!-- Email поле -->
+                <label class="required">
+                    Email:*
+                    <input type="email" name="email" required placeholder="example@mail.ru">
+                </label>
+                
+                <!-- Выпадающий список -->
+                <label class="required">
+                    Категория товара:*
+                    <select name="category" required>
+                        <option value="">-- Выберите категорию --</option>
+                        <option value="sneakers">👟 Кроссовки</option>
+                        <option value="shoes">👠 Туфли</option>
+                        <option value="boots">👢 Ботинки</option>
+                        <option value="slippers">🩴 Тапочки</option>
+                    </select>
+                </label>
+                
+                <!-- Радио кнопки -->
+                <label class="required">
+                    Оценка товара:*
+                    <div class="radio-group">
+                        <input type="radio" name="rating" value="5" required> ⭐⭐⭐⭐⭐ (5)
+                        <input type="radio" name="rating" value="4"> ⭐⭐⭐⭐ (4)
+                        <input type="radio" name="rating" value="3"> ⭐⭐⭐ (3)
+                        <input type="radio" name="rating" value="2"> ⭐⭐ (2)
+                        <input type="radio" name="rating" value="1"> ⭐ (1)
+                    </div>
+                </label>
+                
+                <!-- Чекбоксы -->
+                <label>
+                    Достоинства товара:
+                    <div class="checkbox-group">
+                        <input type="checkbox" name="pros[]" value="quality"> Качество
+                        <input type="checkbox" name="pros[]" value="comfort"> Удобство
+                        <input type="checkbox" name="pros[]" value="design"> Дизайн
+                        <input type="checkbox" name="pros[]" value="price"> Цена
+                    </div>
+                </label>
+                
+                <!-- Многострочное текстовое поле -->
+                <label class="required">
+                    Ваш отзыв:*
+                    <textarea name="review" rows="5" required placeholder="Напишите ваш отзыв..."></textarea>
+                </label>
+                
+                <!-- Переключатель (checkbox как toggle) -->
+                <label>
+                    <input type="checkbox" name="recommend" value="yes">
+                    Рекомендую этот товар другим покупателям
+                </label>
+                
+                <!-- Скрытое поле -->
+                <input type="hidden" name="form_type" value="feedback">
+                
+                <!-- Кнопка отправки -->
+                <button type="submit">Отправить отзыв</button>
+                <button type="reset">Очистить</button>
+            </form>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="banner">
+                <a href="delivery.html">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxbGjbxj0oPxJz_Dk8G3tuIlVLmPiE_x8_SQ&s" 
+                         alt="Бесплатная доставка" width="180">
+                    <p>🚚 Бесплатная доставка</p>
+                </a>
+            </div>
+            <div class="banner">
+                <a href="catalog.html">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Yhd3NrRexdGSo1C6mSpyZUZh2gEGNKq3og&s" 
+                         alt="Новая коллекция" width="180">
+                    <p>✨ Новая коллекция</p>
+                </a>
+            </div>
+            <div class="banner">
+                <a href="discounts.html">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Howx1kBT1KffR3kuPvFpRAb6RnygHH73ow&s" 
+                         alt="Скидки 50%" width="180">
+                    <p>🔥 Скидки 50%</p>
+                </a>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Сити-Класс. Все права защищены</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

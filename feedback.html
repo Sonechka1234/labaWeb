@@ -7,36 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const loginForm = document.querySelector('.login-form form');
-
-    if (!loginForm) return;
-
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const login = loginForm.querySelector('input[name="login"]').value.trim();
-        const password = loginForm.querySelector('input[name="password"]').value.trim();
-
-        const savedUser = localStorage.getItem('userCityClass');
-
-        if (!savedUser) {
-            alert('❌ Нет зарегистрированного пользователя. Сначала зарегистрируйтесь.');
-            return;
-        }
-
-        const user = JSON.parse(savedUser);
-
-        if (login === user.login && password === user.password) {
-            alert('✅ Вход выполнен успешно!');
-            window.location.href = 'account.html';
-        } else {
-            alert('❌ Неверный логин или пароль.');
-        }
-    });
-});
-</script>
 <body>
     <header class="header">
         <div class="logo">
@@ -44,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <div class="site-name">СИТИ-КЛАСС</div>
         <div class="login-form">
-            <form action="login.html" method="get">
+            <form action="#" method="post" id="headerLoginForm">
                 <label>логин: <input type="text" name="login"></label><br>
                 <label>пароль: <input type="password" name="password"></label><br>
                 <a href="register.html" class="register-link">регистрация</a>
@@ -77,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <h1>ФОРМА ОТЗЫВА</h1>
             <hr>
 
-            <form class="feedback-form" id="feedbackForm">
+            <form class="feedback-form" id="feedbackForm" action="save_feedback.php" method="post">
                 <label>Ваше имя:
                     <input type="text" name="username" required placeholder="Введите имя">
                 </label>
@@ -113,42 +83,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 <label>Выберите город:
                     <select name="city" size="4">
-                        <option>Москва</option>
-                        <option>Санкт-Петербург</option>
-                        <option>Казань</option>
-                        <option>Екатеринбург</option>
+                        <option value="Москва">Москва</option>
+                        <option value="Санкт-Петербург">Санкт-Петербург</option>
+                        <option value="Казань">Казань</option>
+                        <option value="Екатеринбург">Екатеринбург</option>
                     </select>
                 </label>
 
                 <label>Текст отзыва:
-                    <textarea name="message" placeholder="Напишите ваш отзыв"></textarea>
+                    <textarea name="message" required placeholder="Напишите ваш отзыв"></textarea>
                 </label>
-
-                <div id="feedbackSuccess" class="success-message"></div>
 
                 <button type="submit">Отправить</button>
                 <button type="reset">Очистить</button>
+
+                <div id="feedbackSuccess" class="success-message"></div>
+                <div id="feedbackError" class="error-message"></div>
             </form>
         </main>
 
         <aside class="right-sidebar">
             <div class="banner">
                 <a href="delivery.html">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxbGjbxj0oPxJz_Dk8G3tuIlVLmPiE_x8_SQ&s" 
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxbGjbxj0oPxJz_Dk8G3tuIlVLmPiE_x8_SQ&s"
                          alt="Бесплатная доставка" width="180">
                     <p>🚚 Бесплатная доставка</p>
                 </a>
             </div>
             <div class="banner">
                 <a href="catalog.html">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Yhd3NrRexdGSo1C6mSpyZUZh2gEGNKq3og&s" 
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Yhd3NrRexdGSo1C6mSpyZUZh2gEGNKq3og&s"
                          alt="Новая коллекция" width="180">
                     <p>✨ Новая коллекция</p>
                 </a>
             </div>
             <div class="banner">
                 <a href="discounts.html">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Howx1kBT1KffR3kuPvFpRAb6RnygHH73ow&s" 
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Howx1kBT1KffR3kuPvFpRAb6RnygHH73ow&s"
                          alt="Скидки 50%" width="180">
                     <p>🔥 Скидки 50%</p>
                 </a>
@@ -161,11 +132,69 @@ document.addEventListener('DOMContentLoaded', function () {
     </footer>
 
     <script>
-    document.getElementById('feedbackForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginForm = document.getElementById('headerLoginForm');
+
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const login = loginForm.querySelector('input[name="login"]').value.trim();
+                const password = loginForm.querySelector('input[name="password"]').value.trim();
+                const savedUser = localStorage.getItem('userCityClass');
+
+                if (!savedUser) {
+                    alert('❌ Нет зарегистрированного пользователя. Сначала зарегистрируйтесь.');
+                    return;
+                }
+
+                const user = JSON.parse(savedUser);
+
+                if (login === user.login && password === user.password) {
+                    alert('✅ Вход выполнен успешно!');
+                    window.location.href = 'account.html';
+                } else {
+                    alert('❌ Неверный логин или пароль.');
+                }
+            });
+        }
+
+        const feedbackForm = document.getElementById('feedbackForm');
         const successDiv = document.getElementById('feedbackSuccess');
-        successDiv.innerHTML = '✅ Спасибо! Ваш отзыв отправлен.';
-        successDiv.style.display = 'block';
+        const errorDiv = document.getElementById('feedbackError');
+
+        if (feedbackForm) {
+            feedbackForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                successDiv.classList.remove('show');
+                errorDiv.classList.remove('show');
+                successDiv.innerHTML = '';
+                errorDiv.innerHTML = '';
+
+                const formData = new FormData(feedbackForm);
+
+                fetch('save_feedback.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(result => {
+                    if (result.trim() === 'success') {
+                        successDiv.innerHTML = '✅ Спасибо! Ваш отзыв отправлен.';
+                        successDiv.classList.add('show');
+                        feedbackForm.reset();
+                    } else {
+                        errorDiv.innerHTML = result;
+                        errorDiv.classList.add('show');
+                    }
+                })
+                .catch(() => {
+                    errorDiv.innerHTML = '❌ Ошибка соединения с сервером.';
+                    errorDiv.classList.add('show');
+                });
+            });
+        }
     });
     </script>
 </body>

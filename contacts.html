@@ -7,45 +7,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const loginForm = document.querySelector('.login-form form');
-
-    if (!loginForm) return;
-
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const login = loginForm.querySelector('input[name="login"]').value.trim();
-        const password = loginForm.querySelector('input[name="password"]').value.trim();
-
-        const savedUser = localStorage.getItem('userCityClass');
-
-        if (!savedUser) {
-            alert('❌ Нет зарегистрированного пользователя. Сначала зарегистрируйтесь.');
-            return;
-        }
-
-        const user = JSON.parse(savedUser);
-
-        if (login === user.login && password === user.password) {
-            alert('✅ Вход выполнен успешно!');
-            window.location.href = 'account.html';
-        } else {
-            alert('❌ Неверный логин или пароль.');
-        }
-    });
-});
-</script>
 <body>
     <header class="header">
         <div class="logo">
-            <img src="images/logo.png" 
-                 alt="Логотип Сити-Класс" width="120">
+            <img src="images/logo.png" alt="Логотип Сити-Класс" width="120">
         </div>
         <div class="site-name">СИТИ-КЛАСС</div>
         <div class="login-form">
-            <form action="#" method="post">
+            <form action="#" method="post" id="headerLoginForm">
                 <label>логин: <input type="text" name="login"></label><br>
                 <label>пароль: <input type="password" name="password"></label><br>
                 <a href="register.html" class="register-link">регистрация</a>
@@ -59,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <a href="catalog.html">👟 Наша обувь</a>
         <a href="about.html">🏢 О магазине</a>
         <a href="contacts.html">📞 Контакты</a>
+        <a href="feedback.html">📝 Отзывы</a>
     </nav>
 
     <div class="container">
@@ -69,37 +39,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 <li><a href="catalog.html">👟 Каталог</a></li>
                 <li><a href="about.html">🏢 О нас</a></li>
                 <li><a href="contacts.html">📞 Контакты</a></li>
+                <li><a href="feedback.html">📝 Отзывы</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <h1>НАПИШИТЕ НАМ</h1>
             <hr>
-            
-            <form class="contact-form" action="#" method="post">
-                <label>Ваше имя: 
+
+            <form class="contact-form" id="contactForm" novalidate>
+                <label>Ваше имя:
                     <input type="text" name="name" required placeholder="Введите имя">
-                </label><br><br>
-                
-                <label>Ваш Email: 
+                </label>
+
+                <label>Ваш Email:
                     <input type="email" name="email" required placeholder="example@mail.ru">
-                </label><br><br>
-                
-                <label>Тема обращения: 
+                </label>
+
+                <label>Тема обращения:
                     <input type="text" name="subject" placeholder="Тема">
-                </label><br><br>
-                
-                <label>Ваш телефон: 
+                </label>
+
+                <label>Ваш телефон:
                     <input type="tel" name="phone" placeholder="+7 (___) ___-__-__">
-                </label><br><br>
-                
-                <label>Сообщение:<br>
-                    <textarea name="message" rows="6" cols="50" 
-                              placeholder="Ваше сообщение..."></textarea>
-                </label><br><br>
-                
+                </label>
+
+                <label>Сообщение:
+                    <textarea name="message" rows="6" placeholder="Ваше сообщение..." required></textarea>
+                </label>
+
                 <button type="submit">Отправить сообщение</button>
                 <button type="reset">Очистить форму</button>
+
+                <div id="contactMessage" class="success-message"></div>
+                <div id="contactError" class="error-message"></div>
             </form>
 
             <hr>
@@ -115,30 +88,29 @@ document.addEventListener('DOMContentLoaded', function () {
             </ul>
 
             <div class="map">
-                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0&amp;source=constructor" 
-                        width="100%" height="400" frameborder="0">
-                </iframe>
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0&amp;source=constructor"
+                        width="100%" height="400" frameborder="0"></iframe>
             </div>
         </main>
 
         <aside class="right-sidebar">
             <div class="banner">
                 <a href="delivery.html">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxbGjbxj0oPxJz_Dk8G3tuIlVLmPiE_x8_SQ&s" 
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxbGjbxj0oPxJz_Dk8G3tuIlVLmPiE_x8_SQ&s"
                          alt="Бесплатная доставка" width="180">
                     <p>🚚 Бесплатная доставка</p>
                 </a>
             </div>
             <div class="banner">
                 <a href="catalog.html">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Yhd3NrRexdGSo1C6mSpyZUZh2gEGNKq3og&s" 
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Yhd3NrRexdGSo1C6mSpyZUZh2gEGNKq3og&s"
                          alt="Новая коллекция" width="180">
                     <p>✨ Новая коллекция</p>
                 </a>
             </div>
             <div class="banner">
                 <a href="discounts.html">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Howx1kBT1KffR3kuPvFpRAb6RnygHH73ow&s" 
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Howx1kBT1KffR3kuPvFpRAb6RnygHH73ow&s"
                          alt="Скидки 50%" width="180">
                     <p>🔥 Скидки 50%</p>
                 </a>
@@ -149,6 +121,78 @@ document.addEventListener('DOMContentLoaded', function () {
     <footer class="footer">
         <p>&copy; 2026 Сити-Класс. Все права защищены</p>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginForm = document.getElementById('headerLoginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const login = loginForm.querySelector('input[name="login"]').value.trim();
+                const password = loginForm.querySelector('input[name="password"]').value.trim();
+                const savedUser = localStorage.getItem('userCityClass');
+
+                if (!savedUser) {
+                    alert('❌ Нет зарегистрированного пользователя. Сначала зарегистрируйтесь.');
+                    return;
+                }
+
+                const user = JSON.parse(savedUser);
+
+                if (login === user.login && password === user.password) {
+                    alert('✅ Вход выполнен успешно!');
+                    window.location.href = 'account.html';
+                } else {
+                    alert('❌ Неверный логин или пароль.');
+                }
+            });
+        }
+
+        const form = document.getElementById('contactForm');
+        const successBox = document.getElementById('contactMessage');
+        const errorBox = document.getElementById('contactError');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            successBox.classList.remove('show');
+            errorBox.classList.remove('show');
+            successBox.textContent = '';
+            errorBox.textContent = '';
+
+            const name = form.querySelector('input[name="name"]').value.trim();
+            const email = form.querySelector('input[name="email"]').value.trim();
+            const message = form.querySelector('textarea[name="message"]').value.trim();
+
+            if (!name || !email || !message) {
+                errorBox.textContent = '❌ Заполните имя, email и сообщение.';
+                errorBox.classList.add('show');
+                return;
+            }
+
+            try {
+                const response = await fetch('save_contact.php', {
+                    method: 'POST',
+                    body: new FormData(form)
+                });
+
+                const result = (await response.text()).trim();
+
+                if (result === 'success') {
+                    successBox.textContent = '✅ Сообщение успешно отправлено!';
+                    successBox.classList.add('show');
+                    form.reset();
+                } else {
+                    errorBox.textContent = result || '❌ Не удалось отправить сообщение.';
+                    errorBox.classList.add('show');
+                }
+            } catch (e) {
+                errorBox.textContent = '❌ Ошибка соединения с сервером.';
+                errorBox.classList.add('show');
+            }
+        });
+    });
+    </script>
 </body>
 </html>

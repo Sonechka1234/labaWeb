@@ -1159,3 +1159,59 @@ a:hover {
 .btn-shop:hover {
     background: #b42d87;
 }
+.feedback-form {
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 30px;
+    background: linear-gradient(145deg, #fff, #FFF0F5);
+    border: 3px solid #FFB6C1;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
+}
+
+.feedback-form label {
+    display: block;
+    margin: 14px 0 8px;
+    font-weight: bold;
+}
+
+.feedback-form input[type="text"],
+.feedback-form input[type="email"],
+.feedback-form textarea,
+.feedback-form select,
+.feedback-form input[type="range"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 6px;
+    border: 2px solid #FFC0CB;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.feedback-form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.feedback-form input[type="radio"],
+.feedback-form input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+.feedback-form button {
+    background: linear-gradient(135deg, #FF69B4, #FF1493);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 12px 8px 0 0;
+    border-radius: 22px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.success-message,
+.error-message {
+    margin-top: 15px;
+}

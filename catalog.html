@@ -10,8 +10,7 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img src="c:\Users\sofiz\Downloads\1693093739_grizly-club-p-kartinki-vinks-nadpis-bez-fona-12-removebg-preview.png" 
-                 alt="Логотип Сити-Класс" width="120">
+            <img src="images/logo.png" alt="Логотип Сити-Класс" width="120">
         </div>
         <div class="site-name">СИТИ-КЛАСС</div>
         <div class="login-form">
@@ -29,6 +28,7 @@
         <a href="catalog.html">👟 Наша обувь</a>
         <a href="about.html">🏢 О магазине</a>
         <a href="contacts.html">📞 Контакты</a>
+        <a href="feedback.html">📝 Отзывы</a>
     </nav>
 
     <div class="container">
@@ -39,13 +39,21 @@
                 <li><a href="catalog.html">👟 Каталог</a></li>
                 <li><a href="about.html">🏢 О нас</a></li>
                 <li><a href="contacts.html">📞 Контакты</a></li>
+                <li><a href="feedback.html">📝 Отзывы</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <hr>
             <h1>КАТАЛОГ</h1>
-            
+
+            <form class="search-form" action="search.php" method="post">
+                <label>Поиск товара по первой букве:
+                    <input type="search" name="search_q" placeholder="Введите первую букву товара">
+                </label>
+                <button type="submit">Найти</button>
+            </form>
+
             <div class="catalog-grid">
                 <div class="product-card">
                     <a href="product1.html">

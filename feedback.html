@@ -3,10 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тапочки Victoria's Secret - Сити-Класс</title>
+    <title>Отзывы - Сити-Класс</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.querySelector('.login-form form');
+
+    if (!loginForm) return;
+
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const login = loginForm.querySelector('input[name="login"]').value.trim();
+        const password = loginForm.querySelector('input[name="password"]').value.trim();
+
+        const savedUser = localStorage.getItem('userCityClass');
+
+        if (!savedUser) {
+            alert('❌ Нет зарегистрированного пользователя. Сначала зарегистрируйтесь.');
+            return;
+        }
+
+        const user = JSON.parse(savedUser);
+
+        if (login === user.login && password === user.password) {
+            alert('✅ Вход выполнен успешно!');
+            window.location.href = 'account.html';
+        } else {
+            alert('❌ Неверный логин или пароль.');
+        }
+    });
+});
+</script>
 <body>
     <header class="header">
         <div class="logo">
@@ -14,7 +44,7 @@
         </div>
         <div class="site-name">СИТИ-КЛАСС</div>
         <div class="login-form">
-            <form action="#" method="post">
+            <form action="login.html" method="get">
                 <label>логин: <input type="text" name="login"></label><br>
                 <label>пароль: <input type="password" name="password"></label><br>
                 <a href="register.html" class="register-link">регистрация</a>
@@ -29,6 +59,7 @@
         <a href="about.html">🏢 О магазине</a>
         <a href="contacts.html">📞 Контакты</a>
         <a href="feedback.html">📝 Отзывы</a>
+        <a href="login.html">🔐 Вход</a>
     </nav>
 
     <div class="container">
@@ -40,76 +71,69 @@
                 <li><a href="about.html">🏢 О нас</a></li>
                 <li><a href="contacts.html">📞 Контакты</a></li>
                 <li><a href="feedback.html">📝 Отзывы</a></li>
+                <li><a href="login.html">🔐 Вход</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
-            <h1>Тапочки Victoria's Secret</h1>
-            
-            <h2>Описание товара</h2>
-            <a href="https://angelsshop.com.ua/content/images/50/825x1100l85nn0/kaptsi-pink-faux-fur-closed-toe-slippersid-25014762295791.jpg" target="_blank">
-                <img src="https://angelsshop.com.ua/content/images/50/825x1100l85nn0/kaptsi-pink-faux-fur-closed-toe-slippersid-25014762295791.jpg" 
-                     alt="Тапочки Victoria's Secret" width="350" class="product-image">
-            </a>
-            
-            <p class="short-description"><strong>Краткое описание:</strong> Мягкие и уютные тапочки от Victoria's Secret. Идеальны для домашнего использования и создания атмосферы комфорта.</p>
-
-            <h2>Характеристики товара</h2>
-            <ul class="characteristics-list">
-                <li>Материал верха: Искусственный мех</li>
-                <li>Подкладка: Мягкий флис</li>
-                <li>Подошва: Нескользящая резина</li>
-                <li>Размеры: 36-40</li>
-                <li>Цвет: Розовый</li>
-                <li>Вес: 180г (пара)</li>
-            </ul>
-
-            <h2>Подробное описание товара</h2>
-            <div class="detailed-description">
-                <p>Тапочки Victoria's Secret — это воплощение уюта и комфорта. Мягкий искусственный мех и тёплая подкладка из флиса создадут ощущение домашнего тепла. Идеальный выбор для холодных вечеров и расслабленного отдыха.</p>
-            </div>
-
-            <h3>Особенности модели:</h3>
-            <ol type="1">
-                <li>Невероятно мягкий искусственный мех</li>
-                <li>Тёплая флисовая подкладка</li>
-                <li>Закрытый носок для дополнительного тепла</li>
-                <li>Нескользящая подошва</li>
-                <li>Логотип Victoria's Secret</li>
-            </ol>
-
-            <h3>Внешний вид</h3>
-            <div class="detailed-description">
-                <p>Розовые тапочки из пушистого искусственного меха. Закрытая модель с мягкой подошвой. Нежный розовый цвет и фирменный логотип Victoria's Secret делают их не только удобными, но и стильными. Отличный подарок для себя или близких.</p>
-            </div>
-
-            <h3>Уход за изделием</h3>
-            <ul>
-                <li>Ручная стирка при температуре не выше 30°C</li>
-                <li>Не отжимать</li>
-                <li>Сушить в расправленном виде</li>
-                <li>Не гладить</li>
-            </ul>
-
+            <h1>ФОРМА ОТЗЫВА</h1>
             <hr>
 
-            <p class="price-big"><strong>Цена: 3 200 руб.</strong></p>
-            <button class="buy-button">Добавить в корзину</button>
+            <form class="feedback-form" id="feedbackForm">
+                <label>Ваше имя:
+                    <input type="text" name="username" required placeholder="Введите имя">
+                </label>
+
+                <label>Email:
+                    <input type="email" name="email" required placeholder="example@mail.ru">
+                </label>
+
+                <p><strong>Пол:</strong></p>
+                <label><input type="radio" name="gender" value="Женский"> Женский</label>
+                <label><input type="radio" name="gender" value="Мужской"> Мужской</label>
+
+                <p><strong>Что вам понравилось?</strong></p>
+                <label><input type="checkbox" name="plus[]" value="Ассортимент"> Ассортимент</label>
+                <label><input type="checkbox" name="plus[]" value="Цены"> Цены</label>
+                <label><input type="checkbox" name="plus[]" value="Обслуживание"> Обслуживание</label>
+
+                <p><strong>Получать уведомления:</strong></p>
+                <label><input type="checkbox" name="notify" value="Да"> Да, получать уведомления</label>
+
+                <label>Оценка сайта:
+                    <input type="range" name="rating" min="1" max="10">
+                </label>
+
+                <label>Выберите любимый бренд:
+                    <select name="brand">
+                        <option value="Winx">Winx</option>
+                        <option value="Jimmy Choo">Jimmy Choo</option>
+                        <option value="Valentino">Valentino</option>
+                        <option value="Victoria's Secret">Victoria's Secret</option>
+                    </select>
+                </label>
+
+                <label>Выберите город:
+                    <select name="city" size="4">
+                        <option>Москва</option>
+                        <option>Санкт-Петербург</option>
+                        <option>Казань</option>
+                        <option>Екатеринбург</option>
+                    </select>
+                </label>
+
+                <label>Текст отзыва:
+                    <textarea name="message" placeholder="Напишите ваш отзыв"></textarea>
+                </label>
+
+                <div id="feedbackSuccess" class="success-message"></div>
+
+                <button type="submit">Отправить</button>
+                <button type="reset">Очистить</button>
+            </form>
         </main>
 
         <aside class="right-sidebar">
-            <div class="banner">
-                <a href="delivery.html">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxbGjbxj0oPxJz_Dk8G3tuIlVLmPiE_x8_SQ&s" alt="Бесплатная доставка" width="180">
-                    <p>🚚 Бесплатная доставка</p>
-                </a>
-            </div>
-            <div class="banner">
-                <a href="catalog.html">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Yhd3NrRexdGSo1C6mSpyZUZh2gEGNKq3og&s" alt="Новая коллекция" width="180">
-                    <p>✨ Новая коллекция</p>
-                </a>
-            </div>
             <div class="banner">
                 <a href="discounts.html">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Howx1kBT1KffR3kuPvFpRAb6RnygHH73ow&s" alt="Скидки 50%" width="180">
@@ -122,5 +146,14 @@
     <footer class="footer">
         <p>&copy; 2026 Сити-Класс. Все права защищены</p>
     </footer>
+
+    <script>
+    document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const successDiv = document.getElementById('feedbackSuccess');
+        successDiv.innerHTML = '✅ Спасибо! Ваш отзыв отправлен.';
+        successDiv.style.display = 'block';
+    });
+    </script>
 </body>
 </html>

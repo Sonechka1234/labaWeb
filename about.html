@@ -10,6 +10,36 @@
 <!-- Ваш style.css (после Bootstrap!) -->
     <link rel="stylesheet" href="style.css">
 </head>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.querySelector('.login-form form');
+
+    if (!loginForm) return;
+
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const login = loginForm.querySelector('input[name="login"]').value.trim();
+        const password = loginForm.querySelector('input[name="password"]').value.trim();
+
+        const savedUser = localStorage.getItem('userCityClass');
+
+        if (!savedUser) {
+            alert('❌ Нет зарегистрированного пользователя. Сначала зарегистрируйтесь.');
+            return;
+        }
+
+        const user = JSON.parse(savedUser);
+
+        if (login === user.login && password === user.password) {
+            alert('✅ Вход выполнен успешно!');
+            window.location.href = 'account.html';
+        } else {
+            alert('❌ Неверный логин или пароль.');
+        }
+    });
+});
+</script>
 <body>
     <header class="header">
         <div class="logo">

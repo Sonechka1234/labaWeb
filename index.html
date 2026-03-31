@@ -8,49 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const siteName = document.querySelector('.site-name');
-    if (siteName) {
-        const text = siteName.textContent.trim();
-        siteName.textContent = '';
-        siteName.setAttribute('aria-label', text);
-        
-        text.split('').forEach((letter, index) => {
-            const span = document.createElement('span');
-            span.textContent = letter === ' ' ? '\u00A0' : letter;
-            span.style.display = 'inline-block';
-            span.style.opacity = '1';
-            span.style.transform = 'translateY(0)';
-            span.style.transition = 'all 0.3s ease';
-            span.style.transitionDelay = `${index * 0.05}s`;
-            siteName.appendChild(span);
-        });
-        
-        siteName.addEventListener('mouseenter', function() {
-            const letters = this.querySelectorAll('span');
-            letters.forEach((letter, i) => {
-                setTimeout(() => {
-                    letter.style.opacity = '1';
-                    letter.style.transform = 'translateY(-5px)';
-                    letter.style.color = '#FFC0CB';
-                    letter.style.textShadow = '0 0 15px #FF69B4';
-                }, i * 30);
-            });
-        });
-        
-        siteName.addEventListener('mouseleave', function() {
-            const letters = this.querySelectorAll('span');
-            letters.forEach(letter => {
-                letter.style.opacity = '1';
-                letter.style.transform = 'translateY(0)';
-                letter.style.color = '#FF69B4';
-                letter.style.textShadow = '0 0 5px #fff, 0 0 10px #FF69B4';
-            });
-        });
-    }
-});
-</script>
-<script>
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.querySelector('.login-form form');
 

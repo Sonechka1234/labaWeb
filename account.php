@@ -131,5 +131,40 @@ if ($hours < 12) {
     <footer class="footer">
         <p>&copy; 2026 Сити-Класс. Все права защищены</p>
     </footer>
+    <button class="cart" id="cart">
+        <img class="cart__image" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart">
+        <div class="cart__num" id="cart_num">0</div>
+    </button>
+
+    <div class="popup">
+        <div class="popup__container" id="popup_container">
+            <div class="popup__item">
+                <h1 class="popup__title">Оформление заказа</h1>
+            </div>
+
+            <div class="popup__item" id="popup_product_list"></div>
+
+            <div class="popup__item">
+                <div class="popup__cost">
+                    <h2 class="popup__cost-title">Итого</h2>
+                    <output class="popup__cost-value" id="popup_cost">0 ₽</output>
+                </div>
+                <div class="popup__cost">
+                    <h2 class="popup__cost-title">Скидка</h2>
+                    <output class="popup__cost-value" id="popup_discount">0 ₽</output>
+                </div>
+                <div class="popup__cost">
+                    <h2 class="popup__cost-title">Итого со скидкой</h2>
+                    <output class="popup__cost-value" id="popup_cost_discount">0 ₽</output>
+                </div>
+
+                <button class="popup__clear" id="popup_clear">Очистить корзину</button>
+            </div>
+
+            <button class="popup__close" id="popup_close">&times;</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
 </body>
 </html>

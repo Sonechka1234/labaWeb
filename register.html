@@ -85,8 +85,12 @@
 
                 <label>
                     <input type="checkbox" name="agree" required>
-                    Я согласен с условиями использования*
+                    Я согласен с <a href="privacy_policy.txt" target="_blank">политикой конфиденциальности</a>*
                 </label>
+
+                <p style="margin-top:10px;">
+                    <a href="privacy_policy.txt" download>Скачать политику конфиденциальности</a>
+                </p>
 
                 <button type="submit">Зарегистрироваться</button>
                 <button type="reset">Очистить</button>
@@ -120,17 +124,23 @@
 
     <footer class="footer">
         <p>&copy; 2026 Сити-Класс. Все права защищены</p>
+        <p>
+            <a href="privacy_policy.txt" target="_blank">Политика конфиденциальности</a> |
+            <a href="privacy_policy.txt" download>Скачать политику</a>
+        </p>
     </footer>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         const loginForm = document.getElementById('headerLoginForm');
+
         if (loginForm) {
             loginForm.addEventListener('submit', function(event) {
                 event.preventDefault();
 
                 const login = loginForm.querySelector('input[name="login"]').value.trim();
                 const password = loginForm.querySelector('input[name="password"]').value.trim();
+
                 const savedUser = localStorage.getItem('userCityClass');
 
                 if (!savedUser) {
@@ -166,7 +176,7 @@
             const passwordConfirm = form.querySelector('input[name="password_confirm"]').value.trim();
 
             if (!agree) {
-                errorBox.textContent = '❌ Нужно согласиться с условиями.';
+                errorBox.textContent = '❌ Нужно согласиться с политикой конфиденциальности.';
                 errorBox.classList.add('show');
                 return;
             }
@@ -192,19 +202,17 @@
                 const result = (await response.text()).trim();
 
                 if (result === 'success') {
-                    const loginValue = form.querySelector('input[name="login"]').value.trim();
-
                     const userData = {
-                    name: form.querySelector('input[name="name"]').value.trim(),
-                    surname: form.querySelector('input[name="surname"]').value.trim(),
-                    email: form.querySelector('input[name="email"]').value.trim(),
-                    phone: form.querySelector('input[name="phone"]').value.trim(),
-                    login: form.querySelector('input[name="login"]').value.trim(),
-                    password: password,
-                    registered: new Date().toLocaleDateString('ru-RU')
-                };
+                        name: form.querySelector('input[name="name"]').value.trim(),
+                        surname: form.querySelector('input[name="surname"]').value.trim(),
+                        email: form.querySelector('input[name="email"]').value.trim(),
+                        phone: form.querySelector('input[name="phone"]').value.trim(),
+                        login: form.querySelector('input[name="login"]').value.trim(),
+                        password: password,
+                        registered: new Date().toLocaleDateString('ru-RU')
+                    };
 
-                localStorage.setItem('userCityClass', JSON.stringify(userData));
+                    localStorage.setItem('userCityClass', JSON.stringify(userData));
 
                     successBox.textContent = '✅ Регистрация успешно выполнена!';
                     successBox.classList.add('show');

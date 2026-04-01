@@ -116,7 +116,14 @@ document.addEventListener('DOMContentLoaded', function () {
             <hr>
 
             <p class="price-big"><strong>Цена: 38 500 руб.</strong></p>
-            <button class="buy-button">Добавить в корзину</button>
+            <button class="buy-button product-cart-btn"
+                    data-cart-add
+                    data-id="3"
+                    data-name="Туфли Valentino"
+                    data-price="38500"
+                    data-image="https://www.yoox.com/images/items/17/17568014NC_14_f.jpg?impolicy=crop&width=387&height=490">
+                Добавить в корзину
+            </button>
         </main>
 
         <aside class="right-sidebar">
@@ -142,7 +149,44 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     <footer class="footer">
+        <p>
+            <a href="privacy_policy.txt" target="_blank">Политика конфиденциальности</a> |
+            <a href="privacy_policy.txt" download>Скачать политику</a>
+        </p>
         <p>&copy; 2026 Сити-Класс. Все права защищены</p>
     </footer>
+    <button class="cart" id="cart">
+        <img class="cart__image" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Cart" />
+        <div class="cart__num" id="cart_num">0</div>
+    </button>
+
+    <div class="popup">
+        <div class="popup__container" id="popup_container">
+            <div class="popup__item">
+                <h1 class="popup__title">Оформление заказа</h1>
+            </div>
+
+            <div class="popup__item" id="popup_product_list"></div>
+
+            <div class="popup__item">
+                <div class="popup__cost">
+                    <h2 class="popup__cost-title">Итого</h2>
+                    <output class="popup__cost-value" id="popup_cost">0 ₽</output>
+                </div>
+                <div class="popup__cost">
+                    <h2 class="popup__cost-title">Скидка</h2>
+                    <output class="popup__cost-value" id="popup_discount">0 ₽</output>
+                </div>
+                <div class="popup__cost">
+                    <h2 class="popup__cost-title">Итого со скидкой</h2>
+                    <output class="popup__cost-value" id="popup_cost_discount">0 ₽</output>
+                </div>
+            </div>
+
+            <button class="popup__close" id="popup_close">&times;</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
 </body>
 </html>
